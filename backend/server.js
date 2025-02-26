@@ -39,5 +39,14 @@ app.get("/history", async (req, res) => {
     res.json(history);
 });
 
+// Route to Clear History
+app.delete("/clear-history", async (req, res) => {
+    try {
+        await Sum.deleteMany({});
+        res.json({ message: "History cleared!" });
+    } catch (error) {
+        res.status(500).json({ error: "Failed to clear history" });
+    }
+});
 // Start Server
 app.listen(5000, () => console.log("Server running on port 5000"));
