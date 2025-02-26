@@ -34,7 +34,6 @@ app.post("/add", async (req, res) => {
     res.json({ result });
 });
 
-// Route to Fetch History
 app.get("/history", async (req, res) => {
     const history = await Sum.find().sort({ _id: -1 });
     res.json(history);
